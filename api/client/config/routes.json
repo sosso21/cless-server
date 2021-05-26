@@ -1,0 +1,110 @@
+{
+  "routes": [
+    
+    {
+      "method": "POST",
+      "path": "/api/connect",
+      "handler": "client.connect",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/register",
+      "handler": "client.subscribe",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/confirmEmail/:token",
+      "handler": "client.confirmEmailGet",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/sendMeEmailConfirmation",
+      "handler": "client.sendEmailToConfirm",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/sendEmailToResetPwd",
+      "handler": "client.sendEmailToResetPassword",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/resetPasswordForget",
+      "handler": "client.resetForgetPassword",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/updateUser",
+      "handler": "client.updateInfo",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/promo/user",
+      "handler": "client.promo",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/promo/purcent/:code",
+      "handler": "client.promoPurcent",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/promo/PayMe",
+      "handler": "client.promoPayMe",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/getAffiliationProgramInfo/:token",
+      "handler": "client.getAffiliationProgramInfo",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/admin/setUser",
+      "handler": "client.adminChengeUser",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/sentNewsLetter",
+      "handler": "client.sendNewsletter",
+      "config": {
+        "policies": []
+      }
+    }
+    
+  ]
+}

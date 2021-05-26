@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/api/payment",
+      "handler": "commands.payment",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/paymentSuccess",
+      "handler": "commands.paymentSuccess",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/paymentFail",
+      "handler": "commands.paymentFail",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

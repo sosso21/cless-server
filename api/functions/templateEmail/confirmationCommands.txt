@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <main align='center'>
+        <h1 align="center">Merci d'avoir commander sur notre boutique</h1>
+        <p>
+            Votre commande a bien été prise en compte . elle vous sera livrer au plus vite selon votre plan de livraison .
+        </p>
+        <article>
+            Voici les coordonnées relative à votre commande:
+            <ul>
+                <li>Identifiant de la commande : %comandeId%</li>
+                <li> Identifiant du paiment : %paymentID% </li>
+            </ul>
+            n'hésitez pas à reconsulter notre botique pour plus de produit  : <a href="%link%">%link%</a>
+        </article>
+        <footer>
+            En cas de soucis n'hésitez pas à contacter notre service lient . nous somme à votre service 7jrs/7 , 24hrs/24.
+           <br> <small>nous vous conseillons de ne pas supprimer cet email avant réception de votre panier , faut de quoi  oourriez ne plus avoir a disposition les identifians ci-desus. </small>
+        </footer>
+    </main>
+</body>
+
+</html>
+</html>
+ 

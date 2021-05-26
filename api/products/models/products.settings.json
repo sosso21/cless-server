@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "name": "products"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "price": {
+      "type": "json",
+      "required": true,
+      "default":[99.99,false]
+    },
+    "image": {
+      "type": "json",
+      "required": true,
+      "default":["http://127.0.0.1:5000/uploads/default_e23568d6f9.jpg"]
+    },
+    "type": {
+      "type": "json",
+      "default":["homme","femme"]
+    },
+    "models": {
+      "type": "json",
+      "default":[]
+    },
+    "note": {
+      "type": "richtext"
+    }
+  }
+}

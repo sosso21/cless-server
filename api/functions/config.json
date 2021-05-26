@@ -1,0 +1,23 @@
+{
+    "urlClient" : "https://falcon-com.web.app",
+    "urlAPI" : "https://falcon-admin.herokuapp.com",
+    "JWT_SIGN_SECRET":"Mercure1Venus2Terre3Mars4Jupiter5Saturne6Uranus7Neptune8_Kises_N_Air_Force", 
+    "email":{
+        "api":{
+ "OurEMail" : "falconshoppingservice@gmail.com",
+  "passEmail" : "Warzone21"
+        },
+        "newsletter":{
+ "OurEMail" : "falconshoppingsav@gmail.com",
+  "passEmail" : "Warzone21"
+        }
+    },
+
+    "paypal":{
+        "id": "ASZJt5nlpSqNCGiXvp4ynBl5QqJooZhoKvBtCpz6tfwaGNR1IdLD8gzBcmjDAL9vzRFkwops1zI4HHhy",
+        "secret":"EPHVfV7Qt8auVbAqc18-rWm-KI93siuAp4tQP3mh-RV16yrkeFDBtzTZtwaG-c08QY3ArmzsUcjFkGhi",
+        "currency": "EUR",
+        "Deliveries_express_price":20,
+        "Deliveries_normal_price":0
+    }
+}

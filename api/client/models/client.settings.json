@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "clients",
+  "info": {
+    "name": "client",
+    "description": "client users infos"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "firstname": {
+      "type": "string",
+      "required": true,
+      "maxLength": 30,
+      "minLength": 2
+    },
+    "lastname": {
+      "type": "string",
+      "required": true,
+      "maxLength": 30,
+      "minLength": 2
+    },
+    "email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "pass": {
+      "type": "password",
+      "private": true,
+      "required": true
+    },
+    "isAdmin": {
+      "type": "integer",
+      "default": -1,
+      "required": true
+    },
+    "phone": {
+      "type": "json",
+      "default": []
+    },
+    "addr": {
+      "type": "json",
+      "default": []
+    },
+    "promo": {
+      "type": "json",
+      "default": {
+        "value": -1,
+        "media": "",
+        "code": "",
+        "payment": "",
+        "solde": 0,
+        "benef": 0,
+        "money": {
+          "actual": 0,
+          "total": 0,
+          "askToPay": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "delivers",
+  "info": {
+    "name": "deliver"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "Price": {
+      "type": "float",
+      "required": true,
+      "default": "1.00"
+    },
+    "FreeFrom": {
+      "type": "float",
+      "default":"-1.00"
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "actif": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/products",
+      "handler": "products.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/products/:id",
+      "handler": "products.findOne",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

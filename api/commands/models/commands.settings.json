@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "commands",
+  "info": {
+    "name": "commands"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    
+    "purshase": {
+      "type": "json",
+      "required": true
+    },
+    "code_promo": {
+      "type": "string",
+      "default": ""
+    },
+    "payment_Id": {
+      "type": "string",
+      "required": true
+    },
+    "payed": {
+      "type": "boolean",
+      "required": true,
+      "default":false
+    },
+    "commanded_by_admin": {
+      "type": "boolean",
+      "required" : true,
+      "default":false
+    },
+    "adress": {
+      "type": "json",
+      "required" : true,
+      "default":{}
+    },
+    "email": {
+      "type": "email",
+      "default":""
+    },
+    "user_id": {
+      "type": "string",
+      "default":""
+    },
+    "deliveries_express": {
+      "type": "boolean",
+      "required" : true,
+      "default":false
+    },
+    "money": {
+      "type": "number",
+      "required" : true
+    }
+  }
+}
