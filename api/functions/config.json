@@ -1,6 +1,6 @@
 {
     "urlClient" : "https://falcon-com.web.app",
-    "urlAPI" : "https://falcon-admin.herokuapp.com",
+    "urlAPI" : "https://cless-server.herokuapp.com",
     "JWT_SIGN_SECRET":"Mercure1Venus2Terre3Mars4Jupiter5Saturne6Uranus7Neptune8_Kises_N_Air_Force", 
     "email":{
         "api":{

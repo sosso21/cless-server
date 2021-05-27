@@ -2,48 +2,8 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/delivers",
+      "path": "/api/delivers",
       "handler": "deliver.find",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/delivers/count",
-      "handler": "deliver.count",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/delivers/:id",
-      "handler": "deliver.findOne",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "POST",
-      "path": "/delivers",
-      "handler": "deliver.create",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/delivers/:id",
-      "handler": "deliver.update",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/delivers/:id",
-      "handler": "deliver.delete",
       "config": {
         "policies": []
       }
