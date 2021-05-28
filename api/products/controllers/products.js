@@ -7,14 +7,18 @@
 
 module.exports = {
     find: async(ctx)=>{
-        const result = await strapi.query("products").model.find({}, ["name",
+        const products = await strapi.query("products").model.find({}, ["name",
             "description",
             "price",
             "image",
             "type",
             "models"]);
             
-        ctx.send(result)
+            // deliver
+
+            const deliver = await strapi.query("deliver").model.find({});
+
+        ctx.send( {products:products, deliver:deliver} )
 
     },
     findOne : async(ctx)=>{
