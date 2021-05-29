@@ -7,16 +7,18 @@ const config = require('../../functions/config.json')
 module.exports = {
   // payment Create link
   payment: async (ctx) => {
- 
-
+    
     const promo = ctx.request.body.promo;
-    const express =ctx.request.body.express;
     const cart = JSON.parse(ctx.request.body.cart);
     const token =ctx.request.body.token;
     const auth = jwt_utils.getUserInfo(token);  
-    
+     const typeDeliver = await strapi.query("deliver").model.findOne({_id:ctx.request.body.typeDeliver});
+
     if(cart.length == 0){
       return ctx.send({error:"le panier est vide"})
+    }
+    if(typeDeliver== undefined ){
+      return ctx.send({error:"error, réesayer plus tard"})
     }
 let userClient = {};
 if(auth !=-1){
@@ -24,28 +26,25 @@ if(auth !=-1){
   _id : auth.userId
   })
 }
-    const total = await somme.total(promo, express, cart);
+    const total = await somme.total(promo, typeDeliver, cart);
   const newCommands = await strapi.query("commands").create({
         purshase: total.purshase,
         code_promo:promo ? promo : "",
-    "email": userClient.email ? userClient.email : "",
-    "user_id":userClient._id ? userClient._id : "",
-    "deliveries_express": (express == "true") ? true : false ,
-    "money": total.totalMoney
+    email: userClient.email ? userClient.email : "",
+    user_id:userClient._id ? userClient._id : "",
+    typeDeliver: typeDeliver ? typeDeliver : "" ,
+    money: total.totalMoney
      });
      
      let names = "";
 for (let i = 0; i < newCommands.purshase.length; i++) {
   const element = newCommands.purshase[i];
   names += element.name+", "
-  
 }
-names += " livraison "+ total.deliveries.type
-
+names += " Livraison " + typeDeliver.name
 
 
      const createPayment = await setPaypal.createPayment( newCommands._id ,newCommands.money,names);
-     
       await strapi.query("commands").update(
       { 
         _id: newCommands._id 

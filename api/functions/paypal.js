@@ -3,6 +3,7 @@ const config = require('./config.json')
 module.exports = {
   // connect
   createPayment: async ( sku ,totalToPay ,name) => {
+  console.log(' sku ,totalToPay ,name:',{sku: sku ,totalToPay:totalToPay ,name:name})
 
     paypal.configure({
       mode: "sandbox", //sandbox or live
@@ -37,11 +38,11 @@ module.exports = {
       }, ],
     };
 
-
-    
     const cretePaypalPaument = () => {
       return new Promise((resolve, reject) => {
         paypal.payment.create(create_payment_json, (error, payment) => {
+          console.log('create_payment_json:', create_payment_json)
+          console.log('payment:', payment)
           if (error) {
             //AXCODE
             reject(error);
