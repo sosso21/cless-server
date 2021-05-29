@@ -27,10 +27,6 @@
     "description": {
       "type": "richtext",
       "required": true
-    },
-    "actif": {
-      "type": "boolean",
-      "default": true
     }
   }
 }
