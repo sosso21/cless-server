@@ -14,8 +14,8 @@
     },
 
     "paypal":{
-        "id": "AdAqaDY0Fuagrl3yPZL8l73oVsd3rvImYJVfww051VHNYghk42uuzAty4OQPbEgW6TgJPx7uwn0f9JDK",
-        "secret":"EAZXBwv0ay-zbwreNSEvKqWwRuaFTrxojL5T5EyOoaHRmK75leWtJ9sQubrE47vRCRIb1DqhATMQwtu1",
+        "id":"AUWoY-lTgFwSk61tV7SHNRAs0o3GubObw4KIRxvP28yX4kqIXPoHUKMswPTUgs9rj8rINynHCpaJ9bpA",
+        "secret":"EC90AVzJAbubOD9lPdZo5tg0UZxs2gJ4pi48kLiU6aZZugQq-WzI0jNNgeT4_I5Xeelw_5oGqNYUlGBH",
         "currency": "EUR"
     }
 }
