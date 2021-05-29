@@ -1,7 +1,7 @@
 const { pipeline } = require("nodemailer/lib/xoauth2");
 const config = require("./config.json");
 module.exports = {
-  total: async (promo, express, cart) =>
+  total: async (promo, typeDeliver, cart) =>
   {
     let ids = [];
     cart.map((i) => ids.push(i._id));
@@ -71,11 +71,8 @@ module.exports = {
     }
 
     const deliveries = {
-      type: express == "true" ? "express" : "normal",
-      price:
-        express == "true"
-          ? config.paypal.Deliveries_express_price
-          : config.paypal.Deliveries_normal_price,
+      type: typeDeliver.name,
+      price:(typeDeliver.FreeFrom != -1 && totalMoney > typeDeliver.FreeFrom ) ? 0 : typeDeliver.Price 
     };
     return {
       purshase: allProducts,
