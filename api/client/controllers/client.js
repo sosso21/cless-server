@@ -175,7 +175,7 @@ module.exports = {
 
   // confirm email
   confirmEmailGet: async (ctx) => {
-    const token = ctx.query.token;
+    const token = ctx.params.token;
     const auth = jwt_utils.getUserInfo(token);
     console.log("auth:", auth);
 
@@ -624,7 +624,7 @@ module.exports = {
 
   // see code pursentage
   promoPurcent: async (ctx) => {
-    const code = ctx.query.code;
+    const code = ctx.params.code;
     const zero = () => {
       return ctx.send({
         reduction: 0,
@@ -685,8 +685,9 @@ module.exports = {
       });
     };
 
-    const token = ctx.query.token;
-    const decode_token = await jwt_utils.getUserInfo(JSON.parse(token));
+    const token = ctx.params.token;
+    console.log('token:', token)
+    const decode_token = await jwt_utils.getUserInfo(token);
 
     if (decode_token == -1) {
       return disconnect();
