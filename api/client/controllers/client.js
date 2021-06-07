@@ -60,8 +60,7 @@ module.exports = {
       const token = jwt_utils.generateTokenForUser(infoUser, 3600 * 24 * 90, {
         ISO: ISO,
       });
-      console.log("ISO:", ISO);
-      console.log("token:", token);
+      
 
       ctx.send({
         token: token,
@@ -87,15 +86,12 @@ module.exports = {
       const infoUser = await strapi.query("client").findOne({
         email: email,
       });
-      console.log("infoUser:", infoUser);
-
+      
       if (infoUser == null) {
         return error();
       }
 
       const correct = await bcrypt.compare(pass, infoUser.pass);
-
-      console.log("result:", correct);
       if (correct) {
         if (infoUser.isAdmin == -1) {
           return error(-1);
@@ -106,11 +102,10 @@ module.exports = {
         return error();
       }
     } else if (ctx.request.body.token != undefined) {
-      console.log(" .body:2", ctx.request.body);
+      
       const decodeToken = jwt_utils.getUserInfo(
-        JSON.parse(ctx.request.body.token)
+        ctx.request.body.token
       );
-      console.log("decodeToken2:", decodeToken);
       if (decodeToken != -1 && decodeToken.ISO == ISO) {
         const infouser = await strapi.query("client").findOne({
           _id: decodeToken.userId,
@@ -177,7 +172,6 @@ module.exports = {
   confirmEmailGet: async (ctx) => {
     const token = ctx.params.token;
     const auth = jwt_utils.getUserInfo(token);
-    console.log("auth:", auth);
 
     if (auth != -1) {
       let authUser = await strapi.query("client").findOne({
@@ -361,7 +355,7 @@ module.exports = {
     const operation = body.operation;
 
     if (body.token != undefined) {
-      const decodeToken = jwt_utils.getUserInfo(JSON.parse(body.token));
+      const decodeToken = jwt_utils.getUserInfo(body.token);
       if (decodeToken != -1) {
         let infouser = await strapi.query("client").findOne({
           _id: decodeToken.userId,
@@ -375,7 +369,6 @@ module.exports = {
             });
           }
         }
-        console.log("infouser : ", infouser);
         if (
           operation == "name" &&
           infouser.firstname != form.firstname &&
@@ -536,11 +529,9 @@ module.exports = {
         error: "disconnect",
       });
     };
-    console.log("ctx.request.body.:", ctx.request.body);
     const form = JSON.parse(ctx.request.body.form);
-    console.log("form:", form);
     const decodeToken = await jwt_utils.getUserInfo(
-      JSON.parse(ctx.request.body.token)
+      ctx.request.body.token
     );
 
     if (decodeToken == -1) {
@@ -551,14 +542,6 @@ module.exports = {
     let infoUser = await strapi.query("client").findOne({
       _id: decodeToken.userId,
     });
-    console.log(
-      "--------------------------------------------------------------"
-    );
-
-    console.log("infoUser:", infoUser);
-    console.log(
-      "--------------------------------------------------------------"
-    );
 
     if ((op == "edit" && infoUser.promo.value != 1) || infoUser == null) {
       return disconnect();
@@ -571,16 +554,7 @@ module.exports = {
           $ne: infoUser._id,
         },
       });
-      console.log(
-        "***[===========================================================================================================================:"
-      );
-      console.log(infoUser._id, existentCode);
-      console.log(
-        "*/===========================================================================================================================]:"
-      );
-
       if (existentCode != null) {
-        console.log(`le code créateur ${form.code} existe déjà`);
         return ctx.send({
           error: `le code créateur ${form.code} existe déjà`,
         });
@@ -590,7 +564,7 @@ module.exports = {
       value: op == "ask" ? 0 : 1,
       media: form.media ? form.media : "-",
       payment: form.payment ? form.payment : "-",
-      code: form.code ? form.code.toUpperCase() : infoUser._id.toUpperCase(),
+      code: form.code ? form.code.toUpperCase() : (infoUser._id).toUpperCase(),
       solde: infoUser.promo.solde ? infoUser.promo.solde : 10,
       benef: infoUser.promo.benef ? infoUser.promo.benef : 10,
       money: {
@@ -601,7 +575,6 @@ module.exports = {
           : false,
       },
     };
-    console.log("newPromo:", newPromo);
     infoUser.promo = newPromo;
     await strapi.query("client").update(
       {
@@ -613,9 +586,6 @@ module.exports = {
         },
       }
     );
-    console.log("=================:");
-    console.log("infoUser:", infoUser);
-    console.log("=================:");
 
     return ctx.send({
       success: newPromo,
@@ -651,7 +621,7 @@ module.exports = {
   // payme
   promoPayMe: async (ctx) => {
     const decodeToken = await jwt_utils.getUserInfo(
-      JSON.parse(ctx.request.body.token)
+      ctx.request.body.token
     );
 
     let infoUser = await strapi.query("client").findOne({
@@ -686,7 +656,6 @@ module.exports = {
     };
 
     const token = ctx.params.token;
-    console.log('token:', token)
     const decode_token = await jwt_utils.getUserInfo(token);
 
     if (decode_token == -1) {
@@ -806,7 +775,7 @@ module.exports = {
     const obj = ctx.request.body.obj;
     const bodyMail = ctx.request.body.bodyMail;
 
-    const decode_token = await jwt_utils.getUserInfo(JSON.parse(token));
+    const decode_token = await jwt_utils.getUserInfo(token);
 
     if (decode_token == -1) {
       return disconnect();
@@ -820,7 +789,6 @@ module.exports = {
       const allUsersEmails = await strapi
         .query("client")
         .model.find({}, ["email"]);
-      console.log("allUsersEmails : ", allUsersEmails);
       allUsersEmails.map((i) =>
         sendEmail(i.email, obj, bodyMail, config.email.newsletter)
       );

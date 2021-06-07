@@ -15,6 +15,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "POST",
+      "path": "/api/uploadProduct",
+      "handler": "products.uploadProduct",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
