@@ -1,5 +1,5 @@
 {
-    "urlClient" : "cless.pages.dev",
+    "urlClient" : "https://cless.pages.dev",
     "urlAPI" : "https://cless-server.herokuapp.com",
     "JWT_SIGN_SECRET":"Mercure1Venus2Terre3Mars4Jupiter5Saturne6Uranus7Neptune8_Kises_N_Air_Force", 
     "email":{
