@@ -63,13 +63,17 @@ module.exports = {
         image: JSON.parse(ctx.request.body.image),
         type: JSON.parse(ctx.request.body.type),
         models: JSON.parse(ctx.request.body.models),
-        note: ctx.request.body.note
+        note: ctx.request.body.note,
       });
-      
+
       if (newProduct) {
-        return ctx.send({ success: newProduct });
+        return ctx.send({
+          success: newProduct,
+        });
       } else {
-        return ctx.send({ error: "error" });
+        return ctx.send({
+          error: "error",
+        });
       }
     } else {
       return disconnect();

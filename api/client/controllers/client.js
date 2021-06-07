@@ -60,7 +60,6 @@ module.exports = {
       const token = jwt_utils.generateTokenForUser(infoUser, 3600 * 24 * 90, {
         ISO: ISO,
       });
-      
 
       ctx.send({
         token: token,
@@ -86,7 +85,7 @@ module.exports = {
       const infoUser = await strapi.query("client").findOne({
         email: email,
       });
-      
+
       if (infoUser == null) {
         return error();
       }
@@ -102,10 +101,7 @@ module.exports = {
         return error();
       }
     } else if (ctx.request.body.token != undefined) {
-      
-      const decodeToken = jwt_utils.getUserInfo(
-        ctx.request.body.token
-      );
+      const decodeToken = jwt_utils.getUserInfo(ctx.request.body.token);
       if (decodeToken != -1 && decodeToken.ISO == ISO) {
         const infouser = await strapi.query("client").findOne({
           _id: decodeToken.userId,
@@ -209,11 +205,11 @@ module.exports = {
         ctx.redirect(config.urlClient + "/login");
       }
     } else {
-      ctx.send("<h1> error: le lien a expirer  </h1>");
+      ctx.send("<h1> error: le lien a expirer</h1>");
     }
   },
 
-  // send email to confirm
+  // send email to confirm-
   sendEmailToConfirm: async (ctx) => {
     const email = ctx.request.body.email;
     let auth = "";
@@ -530,9 +526,7 @@ module.exports = {
       });
     };
     const form = JSON.parse(ctx.request.body.form);
-    const decodeToken = await jwt_utils.getUserInfo(
-      ctx.request.body.token
-    );
+    const decodeToken = await jwt_utils.getUserInfo(ctx.request.body.token);
 
     if (decodeToken == -1) {
       return disconnect();
@@ -564,7 +558,7 @@ module.exports = {
       value: op == "ask" ? 0 : 1,
       media: form.media ? form.media : "-",
       payment: form.payment ? form.payment : "-",
-      code: form.code ? form.code.toUpperCase() : (infoUser._id).toUpperCase(),
+      code: form.code ? form.code.toUpperCase() : infoUser._id.toUpperCase(),
       solde: infoUser.promo.solde ? infoUser.promo.solde : 10,
       benef: infoUser.promo.benef ? infoUser.promo.benef : 10,
       money: {
@@ -620,9 +614,7 @@ module.exports = {
 
   // payme
   promoPayMe: async (ctx) => {
-    const decodeToken = await jwt_utils.getUserInfo(
-      ctx.request.body.token
-    );
+    const decodeToken = await jwt_utils.getUserInfo(ctx.request.body.token);
 
     let infoUser = await strapi.query("client").findOne({
       _id: decodeToken.userId,
