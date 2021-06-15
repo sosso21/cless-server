@@ -30,7 +30,7 @@ module.exports = {
   findOne: async (ctx) => {
     const result = await strapi.query("products").model.findOne(
       {
-        _id: ctx.params.id,
+        _id: ctx.params.id
       },
       ["name", "description", "price", "image", "type", "models"]
     );

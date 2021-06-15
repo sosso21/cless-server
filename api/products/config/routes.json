@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/products/:id",
+      "path": "/api/productsOne/:id",
       "handler": "products.findOne",
       "config": {
         "policies": []
