@@ -28,8 +28,7 @@ module.exports = {
     });
   },
   findOne: async (ctx) => {
-    console.log('-------------------------------- \n :' )
-    console.log('ctx.params.id:', ctx.params.id)
+    
     const result = await strapi.query("products").model.findOne(
       {
         _id: ctx.params.id
