@@ -34,7 +34,7 @@ module.exports = {
       },
       ["name", "description", "price", "image", "type", "models"]
     );
-    return tx.send(result);
+    return tx.send({products :result});
   },
   uploadProduct: async (ctx) => {
     const disconnect = () => {
