@@ -9,8 +9,8 @@
       }
     },
     {
-      "method": "GET",
-      "path": "/api/productsOne:id",
+      "method":"GET",
+      "path": "/api/productsOne/:id",
       "handler": "products.findOne",
       "config": {
         "policies": []
