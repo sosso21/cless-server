@@ -2,13 +2,14 @@ const EmailValidator = require('email-deep-validator');
 const passwordValidator = require('password-validator');
 
 
-const verifyEmail = async(email) => {
+const verifyEmail =async(email) => {
+    console.log('email:', email)
     const emailValidator = new EmailValidator();
-    const { wellFormed, validDomain, validMailbox } = await emailValidator.verify(email);
+    const { wellFormed, validDomain, validMailbox } =  await emailValidator.verify(email);
     // wellFormed: true
     // validDomain: true
     // validMailbox: true
-
+ 
     if (wellFormed && validDomain && validMailbox) {
         return true;
     } else {

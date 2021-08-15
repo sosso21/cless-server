@@ -13,8 +13,8 @@ npm i -S  email-deep-validator
 npm i -S  bcrypt
 npm i -S  password-validator
 npm i -S  jsonwebtoken
-npm i -S  paypal-rest-sdk
 npm i -S  nodemailer 
+npm i -S  paypal-rest-sdk
 */
 const {
   verifyEmail,
@@ -133,7 +133,7 @@ module.exports = {
         error: "le nom et le prénom doit contenir entre 2 et 30 caractères ",
       });
     }
-    if (!verifyEmail(email)) {
+    if (!(await verifyEmail(email))) {
       return ctx.send({
         error: "email invalide ",
       });
@@ -390,7 +390,7 @@ module.exports = {
           });
           return success(newInfoUser);
         } else if (operation == "email" && infouser.email != form.email) {
-          if (!verifyEmail(form.email)) {
+          if (!(await verifyEmail(form.email))) {
             return ctx.send({
               error: "email invalide ",
             });
